@@ -1,0 +1,3 @@
+def Empty(Exception):
+    pass
+
