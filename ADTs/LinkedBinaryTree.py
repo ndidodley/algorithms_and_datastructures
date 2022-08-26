@@ -1,4 +1,3 @@
-from urllib.parse import _NetlocResultMixinBytes
 from . import BinaryTree
 
 
@@ -146,3 +145,21 @@ class LinkedBinaryTree(BinaryTree):
             node._right = t2._root
             t2._root = None
             t2._size = 0
+
+    def inorder(self):
+        if not self.is_empty():
+            for p in self._subtree_inorder(self.root()):
+                yield p
+
+    def _subtree_inorder(self, p):
+        if self.left(p) is not None:
+            for other in self._subtree_inorder(self.left(p)):
+                yield other
+        yield p
+
+        if self.right(p) is not None:
+            for other in self._subtree_inorder(self.right(p)):
+                yield other
+
+    def positions(self):
+        return self.inorder()
