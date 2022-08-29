@@ -1,3 +1,6 @@
+import math
+
+
 class EulerTour:
 
     def __init__(self, tree):
